@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.12]
+
+### Release Description
+Rewrote the README to reflect the current repository: seven skill packs, version-aware Odoo agents (16–19), accurate install paths, and up-to-date project structure.
+
+### Changed
+- `README.md` — updated tagline, stats (~57k lines), and skill inventory; removed references to skills no longer in the repo (payment-integration, brainstorming, writing-skills, mcp-builder).
+- `README.md` — documented three install methods: Cursor Skills (`npx skills add`), CLI (`@unclecat/agent-skills-cli init`), and Claude Code plugin.
+- `README.md` — added Odoo version-targeting section with a 16/17/18+ comparison table; corrected Odoo 16 modifier guidance (`attrs`/`states`, not direct expressions).
+- `README.md` — expanded project structure, contributing notes (SkillSpector baseline, changelog guard), and supported IDE matrix.
+
+### Notes
+- Documentation-only release; no skill pack or agent logic changes.
+
 ## [1.0.11]
 
 ### Release Description

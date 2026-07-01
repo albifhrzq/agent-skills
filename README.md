@@ -4,7 +4,7 @@
 
 ![Agent Skills Hero](lib/image/header-new.png)
 
-**Curated AI skill packs for Odoo, payments, and MCP — 55k+ lines of framework expertise for your AI coding assistant.**
+**Curated AI skill packs for Odoo development, code review, and professional workflows — 57k+ lines of version-pinned framework expertise.**
 
 [![npm version](https://img.shields.io/npm/v/@unclecat/agent-skills-cli.svg?style=flat-square&color=cb3837)](https://www.npmjs.com/package/@unclecat/agent-skills-cli)
 [![npm downloads](https://img.shields.io/npm/dm/@unclecat/agent-skills-cli.svg?style=flat-square&color=blue)](https://www.npmjs.com/package/@unclecat/agent-skills-cli)
@@ -28,6 +28,7 @@
   - [Skills — Framework Documentation](#skills--framework-documentation)
   - [Agents — Autonomous Reviewers](#agents--autonomous-reviewers)
   - [Rules — Coding Standards](#rules--coding-standards)
+- [Targeting an Odoo Version](#targeting-an-odoo-version)
 - [Project Structure](#project-structure)
 - [Supported IDEs](#supported-ides)
 - [How It Works](#how-it-works)
@@ -41,7 +42,9 @@
 
 **Agent Skills** is a collection of documentation and specialized agents that supercharge AI coding assistants like Cursor, Claude Code, Windsurf, and Aider.
 
-Think of it as a **"knowledge pack"** — when you add Agent Skills to your project, your AI assistant gains access to thousands of lines of curated technical expertise about specific frameworks and technologies. This means better code suggestions, fewer mistakes, and more helpful responses.
+Think of it as a **knowledge pack** — when you add Agent Skills to your project, your AI assistant gains access to thousands of lines of curated technical expertise about Odoo and related workflows. That means better code suggestions, fewer version-mismatch bugs, and more helpful responses.
+
+Each Odoo skill pack is pinned to a specific major version (**16.0 · 17.0 · 18.0 · 19.0**) with an `api-highlights.md` file that captures the rules that differ between versions.
 
 ---
 
@@ -49,7 +52,7 @@ Think of it as a **"knowledge pack"** — when you add Agent Skills to your proj
 
 | Without Agent Skills | With Agent Skills |
 |---|---|
-| Generic "how to write a Python function" | Framework-specific "how to write an Odoo 18 model with proper ORM patterns" |
+| Generic "how to write a Python function" | Framework-specific "how to write an Odoo model with proper ORM patterns" |
 | AI guesses at framework conventions | AI follows documented best practices |
 | You re-explain project context every session | Context lives in the repo — AI reads it automatically |
 | Subtle bugs from outdated or mixed-version advice | Version-pinned guides (Odoo 16 / 17 / 18 / 19) |
@@ -59,14 +62,38 @@ Think of it as a **"knowledge pack"** — when you add Agent Skills to your proj
 
 ## Quick Start
 
-Get started in 30 seconds with NPX:
+### Option 1 — Cursor Skills (recommended)
+
+Install the full repository into your project:
 
 ```bash
-# Add Agent Skills to your current project
 npx skills add unclecatvn/agent-skills
 ```
 
-That's it! Your AI assistant will now have access to all the skills in this repository.
+Your AI assistant will discover skills, agents, and rules from the repo automatically.
+
+### Option 2 — CLI (pick a skill pack and version)
+
+Install a specific pack into your project with the bundled CLI:
+
+```bash
+# List available Odoo versions
+npx @unclecat/agent-skills-cli versions skills
+
+# Install Odoo 18 guides for Cursor
+npx @unclecat/agent-skills-cli init --ai cursor --skill skills --version odoo-18.0
+
+# Install for all supported assistants
+npx @unclecat/agent-skills-cli init --ai all --skill skills --version odoo-19.0
+```
+
+Supported `--ai` targets: `cursor`, `claude`, `antigravity`, `kiro`, `docs`, `all`.
+
+Other installable packs: `code-review`, `dtg-base`, `slide`.
+
+### Option 3 — Claude Code plugin
+
+Install via the Claude plugin marketplace defined in [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). The plugin bundles Odoo skill packs (16–19), code review, DTG Base, slide decks, and the Odoo review/tracer agents.
 
 ---
 
@@ -128,21 +155,21 @@ def _compute_total_with_tax(self):
 
 ### Skills — Framework Documentation
 
-In-depth guides written specifically for AI consumption:
+In-depth guides written for AI consumption. Each Odoo pack includes 18 topic guides plus `api-highlights.md`, `SKILL.md`, `CLAUDE.md`, and `AGENTS.md`.
 
 | Skill | Description |
 |-------|-------------|
-| **[Odoo 16.0](skills/odoo-16.0/)** | Odoo 16 development (tree views, direct-expression attrs, `group_operator=`, `_sql_constraints`, classic chatter / kanban patterns) |
-| **[Odoo 17.0](skills/odoo-17.0/)** | Odoo 17 development (tree views, direct-expression attrs, `group_operator=`, `_sql_constraints`, JSONB translations, OWL 2.8) |
-| **[Odoo 18.0](skills/odoo-18.0/)** | Odoo 18 development (ORM, views, security, OWL, reports, migrations, performance) |
-| **[Odoo 19.0](skills/odoo-19.0/)** | Odoo 19 development guide with current conventions |
-| **[DTG Base](skills/dtg-base/)** | DTGBase utilities (date/period, timezone, batch, barcode, Vietnamese text) |
-| **[Payment Integration](skills/payment-integration/)** | SePay, Polar, Stripe, Paddle, Creem.io and related patterns |
-| **[Code Review](skills/code-review/)** | Standards and workflows for automated code review |
-| **[Brainstorming](skills/brainstorming/)** | Structured framework for feature ideation and spec review |
-| **[Writing Skills](skills/writing-skills/)** | Creating and editing AI skills (structure, evals, quality) |
-| **[MCP Builder](skills/mcp-builder/)** | Building Model Context Protocol servers |
+| **[Odoo 16.0](skills/odoo-16.0/)** | Odoo 16 development — `<tree>` views, `attrs`/`states` modifiers, `group_operator=`, explicit chatter block, `kanban-box` templates |
+| **[Odoo 17.0](skills/odoo-17.0/)** | Odoo 17 development — `<tree>` views, direct-expression modifiers (no `attrs`), `group_operator=`, JSONB translations, OWL 2.8 |
+| **[Odoo 18.0](skills/odoo-18.0/)** | Odoo 18 development — `<list>` views, `aggregator=`, `<chatter/>` shortcut, ORM, security, OWL, reports, migrations, performance |
+| **[Odoo 19.0](skills/odoo-19.0/)** | Odoo 19 development — optional `_name`, `models.Constraint` / `models.Index`, current view and frontend conventions |
+| **[DTG Base](skills/dtg-base/)** | DTGBase utilities — date/period, timezone, batch processing, barcode, Vietnamese text, file helpers |
+| **[Code Review](skills/code-review/)** | Receiving feedback, requesting reviews, and verification gates for evidence-based development |
 | **[Slide (AI Vibe Slides)](skills/slide/)** | Self-contained HTML/React slide decks for fullscreen presentation |
+
+#### Odoo reference guide topics (each version)
+
+actions · controllers · data files · decorators · development workflow · fields · manifest · migrations · mixins · models · OWL · performance · reports · security · testing · transactions · translations · views
 
 ### Agents — Autonomous Reviewers
 
@@ -154,25 +181,38 @@ Specialized agents that act as senior technical leads:
 | **[Odoo Code Tracer](agents/odoo-code-tracer/SKILL.md)** | Traces execution flow from an entry point through the call graph. Version-aware (16 / 17 / 18 / 19). |
 | **[Planner](agents/planner.md)** | Breaks down complex features into actionable implementation steps |
 
-#### Targeting an Odoo version
-
-The Odoo agents automatically pick the right reference pack (`skills/odoo-16.0/`, `odoo-17.0/`, `odoo-18.0/`, or `odoo-19.0/`). Resolution order:
-
-1. **Explicit argument** passed to the agent (`odoo_version: "19.0"`).
-2. **Project config**, in order: `.odoo-version` file at the repo root, `odoo_version` in `.claude/odoo.json`, `odoo.version` in `package.json`, or `tool.odoo.version` in `pyproject.toml`.
-3. **Manifest heuristic** — the dominant major version found in workspace `__manifest__.py` files.
-4. **Fallback** — latest supported (`19.0`). The agent states the assumption in its output.
-
-Per-version rule deltas (e.g. `<tree>` vs `<list>`, `group_operator=` vs `aggregator=`, optional `_name` in v19) live in each pack's `references/api-highlights.md`.
-
 ### Rules — Coding Standards
 
 Enforced patterns for consistent, secure code:
 
 | Rule | Description |
 |------|-------------|
-| **[Coding Style](rules/coding-style.md)** | Best practices for naming, imports, and code structure |
+| **[Coding Style](rules/coding-style.md)** | Naming, imports, and code structure |
 | **[Security](rules/security.md)** | Security patterns for enterprise applications |
+
+---
+
+## Targeting an Odoo Version
+
+The Odoo agents automatically pick the right reference pack (`skills/odoo-16.0/` … `odoo-19.0/`). Resolution order:
+
+1. **Explicit argument** passed to the agent (e.g. `odoo_version: "19.0"`).
+2. **Project config**, in order:
+   - `.odoo-version` at the repo root
+   - `odoo_version` in `.claude/odoo.json`
+   - `odoo.version` in `package.json`
+   - `tool.odoo.version` in `pyproject.toml`
+3. **Manifest heuristic** — dominant major version from workspace `__manifest__.py` files.
+4. **Fallback** — latest supported (`19.0`). The agent states the assumption in its output.
+
+Per-version rule deltas live in each pack's `references/api-highlights.md`. Examples:
+
+| Topic | 16.0 | 17.0 | 18.0+ |
+|-------|------|------|-------|
+| List view tag | `<tree>` | `<tree>` | `<list>` |
+| Dynamic modifiers | `attrs` / `states` | direct expressions | direct expressions |
+| Field aggregation | `group_operator=` | `group_operator=` | `aggregator=` |
+| Chatter | explicit block | explicit block | `<chatter/>` |
 
 ---
 
@@ -181,33 +221,39 @@ Enforced patterns for consistent, secure code:
 ```
 agent-skills/
 ├── skills/
-│   ├── odoo-16.0/             # Odoo 16 guides
-│   ├── odoo-17.0/             # Odoo 17 guides
-│   ├── odoo-18.0/             # Odoo 18 guides
-│   ├── odoo-19.0/             # Odoo 19 guides
+│   ├── odoo-16.0/             # Odoo 16 guides + api-highlights
+│   ├── odoo-17.0/             # Odoo 17 guides + api-highlights
+│   ├── odoo-18.0/             # Odoo 18 guides + api-highlights
+│   ├── odoo-19.0/             # Odoo 19 guides + api-highlights
 │   ├── dtg-base/              # DTGBase utilities
-│   ├── payment-integration/   # Payment integrations
-│   ├── code-review/           # Code review standards
-│   ├── brainstorming/         # Ideation and spec review
-│   ├── writing-skills/        # Authoring AI skills
-│   ├── mcp-builder/           # MCP servers
+│   ├── code-review/           # Code review workflow
 │   └── slide/                 # HTML/React slide decks
-├── agents/                    # Odoo reviewers + planner
+├── agents/
+│   ├── odoo-code-review/      # Version-aware Odoo reviewer
+│   ├── odoo-code-tracer/      # Version-aware call-graph tracer
+│   └── planner.md             # Feature planning agent
 ├── rules/                     # Coding style and security
-├── bin/                       # CLI entry point
-└── lib/                       # Shared assets (e.g. images)
+├── bin/                       # CLI (`agent-skills`)
+├── tests/                     # Structural validator (`npm test`)
+├── .claude-plugin/            # Claude Code plugin + marketplace
+├── .github/workflows/         # CI, SkillSpector scan, release guards
+├── CHANGELOG.md
+└── lib/                       # Shared assets (images)
 ```
 
 ---
 
 ## Supported IDEs
 
-Agent Skills works with popular AI-powered IDEs via `npx skills add`:
+Agent Skills works with popular AI-powered IDEs:
 
-- **Cursor** — Rules, remote rules
-- **Claude Code** — Native skill support
-- **Windsurf** — Compatible
-- **Aider** — Compatible
+| IDE / Tool | Install method |
+|------------|----------------|
+| **Cursor** | `npx skills add unclecatvn/agent-skills` or CLI `--ai cursor` |
+| **Claude Code** | Plugin marketplace or CLI `--ai claude` |
+| **Antigravity** | CLI `--ai antigravity` |
+| **Kiro** | CLI `--ai kiro` |
+| **Plain docs folder** | CLI `--ai docs` |
 
 ---
 
@@ -215,12 +261,12 @@ Agent Skills works with popular AI-powered IDEs via `npx skills add`:
 
 ```mermaid
 flowchart LR
-    A[👤 Developer] -->|writes prompt| B[🤖 AI Assistant]
-    B -->|reads| C[📚 Agent Skills]
-    C --> D[Framework Knowledge]
-    C --> E[Best Practices]
-    C --> F[Security Rules]
-    D --> G[✨ Better Code]
+    A[Developer] -->|writes prompt| B[AI Assistant]
+    B -->|reads| C[Agent Skills]
+    C --> D[Version-pinned Odoo guides]
+    C --> E[Review agents]
+    C --> F[Security rules]
+    D --> G[Better code]
     E --> G
     F --> G
     G -->|returns| A
@@ -229,10 +275,10 @@ flowchart LR
     style G fill:#10b981,stroke:#064e3b,color:#fff
 ```
 
-1. You add Agent Skills to your project
-2. Your AI assistant reads the relevant skill files
-3. The AI uses this context to provide framework-specific guidance
-4. You get better, more accurate code assistance
+1. Add Agent Skills to your project (Cursor, CLI, or Claude plugin).
+2. Your AI assistant reads the relevant skill files for the task.
+3. Odoo agents resolve the target version and load the matching reference pack.
+4. You get framework-specific guidance instead of generic guesses.
 
 ---
 
@@ -240,23 +286,32 @@ flowchart LR
 
 | Metric | Value |
 |--------|-------|
-| Documentation | 55,000+ lines |
-| Skill packs | 11 (Odoo 16.0, 17.0, 18.0, 19.0, DTG Base, Payment, Code Review, Brainstorming, Writing Skills, MCP Builder, Slide) |
+| Documentation | ~57,000 lines |
+| Odoo skill packs | 4 (16.0, 17.0, 18.0, 19.0) |
+| Other skill packs | 3 (DTG Base, Code Review, Slide) |
 | Agents | 3 (Odoo Code Review, Odoo Code Tracer, Planner) |
+| Rules | 2 (Coding Style, Security) |
+| Current release | [1.0.12](CHANGELOG.md) |
 | License | MIT |
 
 ---
 
 ## Contributing
 
-We welcome contributions! Here's how you can help:
+Contributions are welcome:
 
-- **Add new skills** — Create documentation for other frameworks
-- **Improve existing docs** — Fix errors, add examples
-- **Create agents** — Build specialized reviewers or planners
-- **Report issues** — Let us know what's missing or broken
+- **Improve Odoo guides** — fix errors, add examples, keep version deltas accurate
+- **Add new skill packs** — follow the structure in `skills/odoo-18.0/`
+- **Extend agents** — build specialized reviewers or planners under `agents/`
+- **Report issues** — open an issue if something is missing or broken
 
-Open an issue or discussion on GitHub if you want to propose changes or new skills.
+Before opening a PR:
+
+```bash
+npm test          # structural validation (SKILL.md frontmatter, plugin paths, changelog)
+```
+
+CI also runs [SkillSpector](https://github.com/NVIDIA/skillspector) on `./skills/` with a baseline in `.skillspector-baseline.yaml`. Version bumps require a matching section in `CHANGELOG.md`.
 
 [![Contributors](https://img.shields.io/github/contributors/unclecatvn/agent-skills?style=flat-square)](https://github.com/unclecatvn/agent-skills/graphs/contributors)
 [![Open Issues](https://img.shields.io/github/issues/unclecatvn/agent-skills?style=flat-square)](https://github.com/unclecatvn/agent-skills/issues)
@@ -266,6 +321,7 @@ Open an issue or discussion on GitHub if you want to propose changes or new skil
 
 ## Links
 
+- [Changelog](CHANGELOG.md)
 - [Issues](https://github.com/unclecatvn/agent-skills/issues)
 - [Discussions](https://github.com/unclecatvn/agent-skills/discussions)
 - [Releases](https://github.com/unclecatvn/agent-skills/releases)
@@ -275,7 +331,7 @@ Open an issue or discussion on GitHub if you want to propose changes or new skil
 
 <div align="center">
 
-_If you find this project helpful, please consider giving it a ⭐ star!_
+_If you find this project helpful, please consider giving it a star._
 
 [![Star History Chart](https://api.star-history.com/svg?repos=unclecatvn/agent-skills&type=Date)](https://star-history.com/#unclecatvn/agent-skills&Date)
 
