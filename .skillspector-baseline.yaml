@@ -3,6 +3,54 @@
 version: 1
 rules: []
 fingerprints:
+- hash: sha256:1da557fbb655edcc
+  rule_id: EA2
+  file: flow-diagram/SKILL.md
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:ba12b223db4241d0
+  rule_id: P2
+  file: flow-diagram/assets/template.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:6247a5a21ad35e87
+  rule_id: P2
+  file: flow-diagram/assets/template.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:692084f7ce63c57a
+  rule_id: P2
+  file: flow-diagram/assets/template.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:7d509fae12839799
+  rule_id: P2
+  file: flow-diagram/references/flow-diagram-example.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:a635da107c6abd01
+  rule_id: P2
+  file: flow-diagram/references/flow-diagram-example.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:bb95e083ffb8caf1
+  rule_id: P2
+  file: flow-diagram/references/layout-patterns-guide.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:92a6b1b0d67175a4
+  rule_id: P2
+  file: flow-diagram/references/layout-patterns-guide.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:c1ca8b24d097ffb3
+  rule_id: P2
+  file: flow-diagram/references/layout-patterns-guide.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:7dc06f788086a987
+  rule_id: P2
+  file: flow-diagram/references/layout-patterns-guide.html
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:235977ab68f49fa5
+  rule_id: TM1
+  file: flow-diagram/assets/add-flow-ping.js
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
+- hash: sha256:de1eb92b9e6c5b86
+  rule_id: TM1
+  file: flow-diagram/assets/fix-arrow-gaps.js
+  reason: 'Accepted: low-confidence doc false-positives + by-design cross-skill composition'
 - hash: sha256:ef7a1c37735a98b9
   rule_id: E1
   file: dtg-base/odoo-18-dtg-base-guide.md
