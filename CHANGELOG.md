@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.13]
+
+### Release Description
+Added two skill packs for day-to-day agent workflows: interactive HTML+SVG flow/architecture diagrams (`flow-diagram`), and Odoo-style commit guidance (`odoo-commit`) so assistants stage, amend, and message commits the way Odoo projects expect. Flow diagrams ship as one self-contained page with zoom/pan, click-to-highlight flows (traveling dots + destination ping), light/dark theme, collision checkers, a layout-patterns guide, and a freight-logistics reference example. Odoo Commit covers amend-vs-new-commit decisions, explicit staging, `[TAG] module:` subjects, and `git commit -F` before opening a PR.
+
+### Added
+- `skills/flow-diagram/` — interactive HTML+SVG flow/architecture diagrams: 2-pane layout, zoom/pan, click-to-highlight flows with traveling dots and destination ping, light/dark theme, offline + browser collision checkers, layout-pattern guide, and freight-logistics reference example.
+- `skills/odoo-commit/` — Odoo commit workflow: `[TAG] module:` subjects, amend-vs-new-commit decisions, explicit staging, `git commit -F`, and local history cleanup before PRs.
+
+### Changed
+- `.claude-plugin/plugin.json` and `README.md` register `flow-diagram` and `odoo-commit`; README inventory, stats, and current-release pointer updated for 1.0.13.
+- `.skillspector-baseline.yaml` extended for flow-diagram static-analysis findings accepted for this release.
+
+### Notes
+- Ships #21 (`odoo-commit`) and #22 (`flow-diagram`).
+- Thank you to **Piruin Panichphol** ([@piruin](https://github.com/piruin)) for contributing the Odoo Commit skill.
+
 ## [1.0.12]
 
 ### Release Description
