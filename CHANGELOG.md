@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.13]
+
+### Release Description
+Added two skill packs shipped on main after 1.0.12: interactive HTML+SVG flow diagrams, and Odoo-style commit workflow guidance.
+
+### Added
+- `skills/flow-diagram/` — self-contained interactive HTML+SVG flow/architecture diagrams (2-pane layout, zoom/pan, click-to-highlight flows with traveling dots and destination ping, light/dark theme, offline + browser collision checkers, layout-pattern guide, and a freight-logistics reference example).
+- `skills/odoo-commit/` — Odoo commit workflow: `[TAG] module:` subjects, amend-vs-new-commit decisions, explicit staging, `git commit -F`, and local history cleanup before PRs.
+- `.claude-plugin/plugin.json` and `README.md` register `odoo-commit`; SkillSpector baseline extended for flow-diagram static findings.
+
+### Notes
+- Closes the unreleased work from #21 and #22.
+
 ## [1.0.12]
 
 ### Release Description

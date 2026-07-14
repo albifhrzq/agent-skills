@@ -89,11 +89,11 @@ npx @unclecat/agent-skills-cli init --ai all --skill skills --version odoo-19.0
 
 Supported `--ai` targets: `cursor`, `claude`, `antigravity`, `kiro`, `docs`, `all`.
 
-Other installable packs: `code-review`, `dtg-base`, `odoo-commit`, `slide`.
+Other installable packs: `code-review`, `dtg-base`, `flow-diagram`, `odoo-commit`, `slide`.
 
 ### Option 3 — Claude Code plugin
 
-Install via the Claude plugin marketplace defined in [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). The plugin bundles Odoo skill packs (16–19), code review, DTG Base, Odoo Commit, slide decks, and the Odoo review/tracer agents.
+Install via the Claude plugin marketplace defined in [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json). The plugin bundles Odoo skill packs (16–19), code review, DTG Base, Odoo Commit, Flow Diagram, slide decks, and the Odoo review/tracer agents.
 
 ---
 
@@ -164,6 +164,7 @@ In-depth guides written for AI consumption. Each Odoo pack includes 18 topic gui
 | **[Odoo 18.0](skills/odoo-18.0/)** | Odoo 18 development — `<list>` views, `aggregator=`, `<chatter/>` shortcut, ORM, security, OWL, reports, migrations, performance |
 | **[Odoo 19.0](skills/odoo-19.0/)** | Odoo 19 development — optional `_name`, `models.Constraint` / `models.Index`, current view and frontend conventions |
 | **[Odoo Commit](skills/odoo-commit/)** | Guides Odoo-style commit creation — message drafting, amend-vs-new-commit decisions, explicit staging, `git commit -F`, and local history cleanup before PRs |
+| **[Flow Diagram](skills/flow-diagram/)** | Interactive self-contained HTML+SVG flow/architecture diagrams — zoom/pan, click-to-highlight flows, traveling dots, collision checkers |
 | **[DTG Base](skills/dtg-base/)** | DTGBase utilities — date/period, timezone, batch processing, barcode, Vietnamese text, file helpers |
 | **[Code Review](skills/code-review/)** | Receiving feedback, requesting reviews, and verification gates for evidence-based development |
 | **[Slide (AI Vibe Slides)](skills/slide/)** | Self-contained HTML/React slide decks for fullscreen presentation |
@@ -227,6 +228,7 @@ agent-skills/
 │   ├── odoo-18.0/             # Odoo 18 guides + api-highlights
 │   ├── odoo-19.0/             # Odoo 19 guides + api-highlights
 │   ├── odoo-commit/           # Odoo-style commit workflow and message guidance
+│   ├── flow-diagram/          # Interactive HTML+SVG flow/architecture diagrams
 │   ├── dtg-base/              # DTGBase utilities
 │   ├── code-review/           # Code review workflow
 │   └── slide/                 # HTML/React slide decks
@@ -290,10 +292,10 @@ flowchart LR
 |--------|-------|
 | Documentation | ~57,000 lines |
 | Odoo skill packs | 4 (16.0, 17.0, 18.0, 19.0) |
-| Other skill packs | 4 (DTG Base, Code Review, Odoo Commit, Slide) |
+| Other skill packs | 5 (DTG Base, Code Review, Odoo Commit, Flow Diagram, Slide) |
 | Agents | 3 (Odoo Code Review, Odoo Code Tracer, Planner) |
 | Rules | 2 (Coding Style, Security) |
-| Current release | [1.0.12](CHANGELOG.md) |
+| Current release | [1.0.13](CHANGELOG.md) |
 | License | MIT |
 
 ---
